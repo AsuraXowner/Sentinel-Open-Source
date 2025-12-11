@@ -7,7 +7,7 @@
 | **GUIAnimations** | boolean | Toggles UI tween animations (WORK IN PROGRESS). |
 | **KeyLink** | string | URL copied when the user clicks "Get Key". |
 | **Keyless** | boolean | If true, bypasses key verification (WORK IN PROGRESS). |
-| **MainLoader** | function or nil | Function executed after successful authorization. |
+| **MainLoader** | function or nil | Function executed after successful login. |
 
 ---
 
@@ -60,7 +60,7 @@ Simple = Enum.Font.SourceSans
 
 ## Assets
 
-Key-value mapping of asset names to Roblox asset IDs.
+--Images
 
 Logo = "rbxassetid://101364305979184"
 other images cant be changed.
