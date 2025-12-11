@@ -63,16 +63,7 @@ Simple = Enum.Font.SourceSans
 Key-value mapping of asset names to Roblox asset IDs.
 
 Logo = "rbxassetid://101364305979184"
-Key = "rbxassetid://82838806217688"
-KeySuccess = "rbxassetid://116063771082381"
-KeyFail = "rbxassetid://91625406905594"
-Loader = "rbxassetid://80990588449079"
-Button = "rbxassetid://120169190001398"
-SettingsIcon = "rbxassetid://2790678226"
-UpdatesIcon = "rbxassetid://83594361214464"
-CloseIcon = "rbxassetid://2777727756"
-CopyIcon = "rbxassetid://91881625340365"
-CheckIcon = "rbxassetid://96756232221869"
+other images cant be changed.
 
 ---
 
