@@ -96,73 +96,31 @@ Updates = {
 
 ---
 
-# Initialize
+## Notify
+
+SentinelUI.Notify(--creates a notification (string)
+Title = "Notification" (string) 
+Description = "content" (string) 
+Duration = 5 // Seconds
+Type = "info" // "success" | "warn" | "alert"
+
+---
+
+# EXAMPLE SCRIPT
 
 ```lua
-SentinelUI.Initialize({
-    KeyLink = "https://...",
-    Keyless = false,
-    Token = "SHA256_Hash",        -- REQUIRED
-    MainLoader = function() end,  -- Runs after key is verified
-
-    Function = function(InputKey)
-        -- Must call one:
-        -- SentinelUI.Authorize(Token)
-        -- SentinelUI.Fail()
-    end
-})
-SentinelUI.Notify
-
-SentinelUI.Notify({
-    Title = "Notification",
-    Description = "Message",
-    Duration = 5,
-    Type = "info" -- success | warn | alert
-})
-SentinelUI.AddSettings
-
-SentinelUI.AddSettings({
-    Title = "Setting Name",
-    Desc = "Description text",
-    Default = true,
-    Function = function(state)
-        -- state = true/false
-    end
-})
-SentinelUI.AddUpdate
-
-SentinelUI.AddUpdate({
-    Version = "v1.0.0",
-    Date = "01.01.2025",
-    Updates = {
-        "Update 1",
-        "Update 2"
-    }
-})
-SentinelUI.AdjustTextbox
-
-SentinelUI.AdjustTextbox("Success", 4)
-Config Management
-
-SentinelUI.SaveConfig()
-SentinelUI.LoadConfig()
-Example Script
-
-local SentinelUI = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/AsuraXowner/Sentinel-Open-Source/refs/heads/main/SentinelKeySystem/Installer.lua"
-))()
-
-local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")
+local SentinelUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/AsuraXowner/Sentinel-Open-Source/refs/heads/main/SentinelKeySystem/Installer.lua"))()
+local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")--dont change this
 
 local function Load()
-    print("runs the code!")
+    print("runs the code!")--your script here
 end
 
 SentinelUI.Initialize({
     KeyLink = "",
     Token = AuthorizeToken,
     MainLoader = Load,
-    Function = function(v)
+    Function = function(v)--returns textbox text
         if v == "example_verify" then
             SentinelUI.Authorize(AuthorizeToken)
         else
