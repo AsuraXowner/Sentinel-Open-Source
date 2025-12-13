@@ -1,4 +1,4 @@
-# SentinelUI Key System v0.32
+# SentinelUI Key System v0.32 PLEASE WAIT FOR NEXT UPDATE patches on their way
 
 ---
 
