@@ -1,4 +1,4 @@
-# SentinelUI Key System EARLY RELEASE PLEASE WAIT FOR NEXT UPDATE THIS UPDATE IS JUST FOR TESTING SO SOME STUFF MIGHT NOT WORK!
+# SentinelUI Key System v0.32
 
 ---
 
@@ -6,7 +6,7 @@
 |-------|------|-------------|
 | **GUIAnimations** | boolean | Toggles UI tween animations (WORK IN PROGRESS). |
 | **KeyLink** | string | URL copied when the user clicks "Get Key". |
-| **Keyless** | boolean | If true, bypasses key verification (WORK IN PROGRESS). |
+| **Keyless** | boolean | If true, bypasses key verification. |
 | **MainLoader** | function or nil | Function executed after successful login. |
 
 ---
@@ -111,6 +111,10 @@ Type = "info" // "success" | "warn" | "alert"
 ```lua
 local SentinelUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/AsuraXowner/Sentinel-Open-Source/refs/heads/main/SentinelKeySystem/Installer.lua"))()
 local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")--dont change this
+
+--SentinelUI.Keys.MainTitle = "Your KeySystem name"
+--SentinelUI.Keys.MainDesc = "Your KeySystem description"
+--SentinelUI.Keys.Assets.Logo = "rbxassetid://101364305979184"--ASSET ID key system logo if u wish to use getcustomasset u need to buy source
 
 local function Load()
     print("runs the code!")--your script here
