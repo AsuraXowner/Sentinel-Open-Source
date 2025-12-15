@@ -1,4 +1,4 @@
-# SentinelUI Key System v0.32 PLEASE WAIT FOR NEXT UPDATE patches on their way
+# SentinelUI Key System v0.38
 
 ---
 
@@ -115,6 +115,7 @@ local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")--do
 --SentinelUI.Keys.MainTitle = "Your KeySystem name"
 --SentinelUI.Keys.MainDesc = "Your KeySystem description"
 --SentinelUI.Keys.Assets.Logo = "rbxassetid://101364305979184"--ASSET ID key system logo if u wish to use getcustomasset u need to buy source
+--SentinelUI.Keys.Directory = "SentinelLibrary"--CHANGE THIS TO something else or else might saves merge and auto loading stuff might not work
 
 local function Load()
     print("runs the code!")--your script here
