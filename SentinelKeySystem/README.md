@@ -5,7 +5,10 @@
 | Field | Type | Description |
 |-------|------|-------------|
 | **GUIAnimations** | boolean | Toggles UI tween animations (WORK IN PROGRESS). |
+| **MainTitle** | string | title of key system. |
+| **MainDesc** | string | description of key system. |
 | **KeyLink** | string | URL copied when the user clicks "Get Key". |
+| **Directory** | string (path) | directory controlls custom names for keys that save. |
 | **Keyless** | boolean | If true, bypasses key verification. |
 | **MainLoader** | function or nil | Function executed after successful login. |
 
@@ -122,9 +125,9 @@ local function Load()
 end
 
 SentinelUI.Initialize({
-    KeyLink = "",
-    Token = AuthorizeToken,
-    MainLoader = Load,
+    KeyLink = "",--key link when users click get key
+    Token = AuthorizeToken,--important secure verification
+    MainLoader = Load,--after key is valid it runs this function
     Function = function(v)--returns textbox text
         if v == "example_verify" then
             SentinelUI.Authorize(AuthorizeToken)
@@ -134,16 +137,16 @@ SentinelUI.Initialize({
     end
 })
 
-table.insert(SentinelUI.Keys.Updates, 3, {
+table.insert(SentinelUI.Keys.Updates, 1, {--MAKE SURE NUMBER IS IN ORDER OR ELSE IT WILL NOT APPEAR
     Version = "v0.5.0 (Custom)",
     Date = "09.12.2025",
     Updates = { "update1", "update2" }
 })
 
-SentinelUI.AddSettings({
+SentinelUI.AddSettings({--your own settings if u wanna add
     Title = "fire from mainscript",
     Desc = "432424",
-    Default = true,
+    Default = true,--is enabled on default or nah
     Function = function(v)
         -- callback
     end
