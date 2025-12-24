@@ -113,41 +113,53 @@ Type = "info" // "success" | "warn" | "alert"
 
 ```lua
 local SentinelUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/AsuraXowner/Sentinel-Open-Source/refs/heads/main/SentinelKeySystem/Installer.lua"))()
-local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")--dont change this
+local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")-- This generates a unique key to prevent key bypassing. Do not modify.
 
---SentinelUI.Keys.MainTitle = "Your KeySystem name"
---SentinelUI.Keys.MainDesc = "Your KeySystem description"
---SentinelUI.Keys.Assets.Logo = "rbxassetid://101364305979184"--ASSET ID key system logo if u wish to use getcustomasset u need to buy source
---SentinelUI.Keys.Directory = "Sentinel"--CHANGE THIS TO something else or else might saves merge and auto loading key stuff might not work
+-- Customize the look and feel of your key system here.
+SentinelUI.Keys.MainTitle    = "Project Sentinel" -- The title
+SentinelUI.Keys.MainDesc     = "Please enter your key to continue" -- The subtitle
+SentinelUI.Keys.Directory    = "KeyHub" -- file name where the key saves (Change this!!!!!!!111)
+SentinelUI.Keys.Assets.Logo  = "rbxassetid://101364305979184" -- Your logo Image ID
 
-local function Load()
-    print("runs the code!")--your script here
+-- Everything inside this function runs ONLY after the user enters the valid key.
+local function OnKeyVerified()
+    print("Key authorized! Loading main script")
+    
+    -- Put your actual script here
 end
 
 SentinelUI.Initialize({
-    KeyLink = "",--key link when users click get key
-    Token = AuthorizeToken,--important secure verification
-    MainLoader = Load,--after key is valid it runs this function
-    Function = function(v)--returns textbox text
-        if v == "example_verify" then
-            SentinelUI.Authorize(AuthorizeToken)
+    KeyLink = "https://linkvertise.com/your-link-here", -- Where users get the key
+    Token   = AuthorizeToken, -- Security token generated above
+    MainLoader = OnKeyVerified, -- Function to run on success
+    
+    Function = function(userInput) 
+        -- This is where you check the key. 
+        if userInput == "example_verify" then
+            SentinelUI.Authorize(AuthorizeToken) -- Success
         else
-            SentinelUI.Fail()
+            SentinelUI.Fail() -- Wrong Key
         end
     end
 })
 
-table.insert(SentinelUI.Keys.Updates, 1, {--MAKE SURE NUMBER IS IN ORDER OR ELSE IT WILL NOT APPEAR
-    Version = "v0.5.0 (Custom)",
-    Date = "09.12.2025",
-    Updates = { "update1", "update2" }
+-- This shows your users what is new in the latest version.
+table.insert(SentinelUI.Keys.Updates, 1, {
+    Version = "v0.5.0",
+    Date    = "09.12.2025",
+    Updates = { 
+        "tuff", 
+        "tuff2", 
+        "tuff3" 
+    }
 })
 
-SentinelUI.AddSettings({--your own settings if u wanna add
-    Title = "fire from mainscript",
-    Desc = "432424",
-    Default = true,--is enabled on default or nah
-    Function = function(v)
-        -- callback
+-- You can add custom toggles that appear directly in the Key System UI.
+SentinelUI.AddSettings({
+    Title = "Auto-Load Script",
+    Desc  = "Automatically skip the key screen if a valid key is saved.",
+    Default = true,
+    Function = function(state)
+        print("Auto-Load is now:", state)
     end
 })
