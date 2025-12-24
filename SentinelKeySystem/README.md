@@ -1,5 +1,6 @@
 # SentinelUI Key System v0.44
 
+If u want to buy source: https://gamerfoxy0.gumroad.com/l/mchqci
 ---
 
 | Field | Type | Description |
@@ -154,7 +155,7 @@ table.insert(SentinelUI.Keys.Updates, 1, {
     }
 })
 
--- You can add custom toggles that appear directly in the Key System UI.
+-- You can add custom settings
 SentinelUI.AddSettings({
     Title = "Auto-Load Script",
     Desc  = "Automatically skip the key screen if a valid key is saved.",
