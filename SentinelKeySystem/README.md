@@ -10,7 +10,8 @@ If u want to buy source: https://gamerfoxy0.gumroad.com/l/mchqci
 | **MainDesc** | string | description of key system. |
 | **KeyLink** | string | URL copied when the user clicks "Get Key". |
 | **Directory** | string (path) | directory controlls custom names for keys that save. |
-| **Keyless** | boolean | If true, bypasses key verification. |
+| **Keyless** | boolean | If true, bypasses key verification. (cant use with premium mode) |
+| **Premium** | boolean | If true, uses discord link instead of get key button. (cant use with keyless mode) |
 | **MainLoader** | function or nil | Function executed after successful login. |
 
 ---
@@ -117,7 +118,7 @@ local SentinelUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/As
 local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")-- This generates a unique key to prevent key bypassing. Do not modify.
 
 -- Customize the look and feel of your key system here.
-SentinelUI.Keys.MainTitle    = "Project Sentinel" -- The title
+SentinelUI.Keys.MainTitle    = "Sentinel" -- The title
 SentinelUI.Keys.MainDesc     = "Please enter your key to continue" -- The subtitle
 SentinelUI.Keys.Directory    = "KeyHub" -- file name where the key saves (Change this!!!!!!!111)
 SentinelUI.Keys.Assets.Logo  = "rbxassetid://101364305979184" -- Your logo Image ID
@@ -130,10 +131,11 @@ local function OnKeyVerified()
 end
 
 SentinelUI.Initialize({
-    KeyLink = "https://linkvertise.com/your-link-here", -- Where users get the key
-    Token   = AuthorizeToken, -- Security token generated above
+    KeyLink = "https://linkvertise.com/link", -- Where users click get the key
+    Token   = AuthorizeToken, -- Security token
     MainLoader = OnKeyVerified, -- Function to run on success
-    
+    --Keyless true, --keyless mode
+    --Premium true, --remvoes get key button and puts discord link
     Function = function(userInput) 
         -- This is where you check the key. 
         if userInput == "example_verify" then
@@ -164,3 +166,11 @@ SentinelUI.AddSettings({
         print("Auto-Load is now:", state)
     end
 })
+
+if queue_on_teleport then
+    queue_on_teleport([[
+        if getgenv().SentinelKeySystem == true then return end
+
+        --key system loadstring here in order to auto execute when joining places
+    ]])
+end
