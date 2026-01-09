@@ -1,4 +1,4 @@
-# SentinelUI Key System v0.5
+# SentinelUI Key System v0.52
 
 If u want to buy source: https://gamerfoxy0.gumroad.com/l/mchqci
 ---
@@ -121,7 +121,7 @@ local AuthorizeToken = crypt.hash(tick()..tostring(math.random()), "sha256")-- T
 SentinelUI.Keys.MainTitle    = "Sentinel" -- The title
 SentinelUI.Keys.MainDesc     = "Please enter your key to continue" -- The subtitle
 SentinelUI.Keys.Directory    = "KeyHub" -- file name where the key saves (Change this!!!!!!!111)
-SentinelUI.Keys.Assets.Logo  = "rbxassetid://101364305979184" -- Your logo Image ID
+SentinelUI.Keys.Assets.Logo  = {ID='rbxassetid://101364305979184',Size=UDim2.new(0, 150, 0, 150)} -- Your logo Image ID and Image Size
 
 -- Everything inside this function runs ONLY after the user enters the valid key.
 local function OnKeyVerified()
